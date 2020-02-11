@@ -1,0 +1,21 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+<div class="example-wrapper" style="margin-top:150px">
+    {% for book in books %}
+        <div class="card" style="width: 18rem; margin-bottom:20px;">
+            <div class="card-body">
+                <h5 class="card-title">{{ book.title }}</h5>
+                <h6 class="card-subtitle mb-2 text-muted">&euro;{{ book.price }}</h6>
+                <p class="card-text">Author: {{ book.author }}</p>
+        {% for review in book.reviews %}
+            <h5>Reviews</h5>
+            <p class="card-text">{{ review.name }}</p>
+            <p class="card-text">{{ review.description }}</p>
+        {% endfor %}
+            </div>
+        </div>
+    {% endfor %}
+</div>
+{% endblock %}
