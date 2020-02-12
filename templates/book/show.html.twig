@@ -36,5 +36,11 @@
         <a href="{{ path('book_edit', {'id': book.id}) }}">edit</a>
 
         {{ include('book/_delete_form.html.twig') }}
+
+        {% for review in book.reviews %}
+            <h5>Reviews</h5>
+            <p class="card-text">{{ review.name }}</p>
+            <p class="card-text">{{ review.description }}</p>
+        {% endfor %}
     </div>
 {% endblock %}
