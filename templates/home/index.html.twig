@@ -3,19 +3,28 @@
 {% block body %}
 
 <div class="example-wrapper" style="margin-top:150px">
+    {% set numb = 0 %}
     {% for book in books %}
-        <div class="card" style="width: 18rem; margin-bottom:20px;">
+        {% if numb == 0 %}
+        <div class="row">
+            {% endif %}
+        <div class="card" style="width: 16rem; min-height: 16rem; margin-bottom: 20px; margin-right: 10px; margin-left: 10px; float: left;">
             <div class="card-body">
-                <h5 class="card-title">{{ book.title }}</h5>
-                <h6 class="card-subtitle mb-2 text-muted">&euro;{{ book.price }}</h6>
-                <p class="card-text">Author: {{ book.author }}</p>
+                <div style="height: 8rem">
+                    <h5 class="card-title">{{ book.title }}</h5>
+                    <h6 class="card-subtitle mb-2 text-muted">&euro;{{ book.price }}</h6>
+                    <p class="card-text">Author: {{ book.author }}</p>
+                </div>
         {% for review in book.reviews %}
-            <h5>Reviews</h5>
-            <p class="card-text">{{ review.name }}</p>
-            <p class="card-text">{{ review.description }}</p>
+            <div style="position: relative; bottom: 0">
+                <h5>Reviews</h5>
+                <p class="card-text">{{ review.name }}</p>
+                <p class="card-text">{{ review.description }}</p>
+            </div>
         {% endfor %}
             </div>
         </div>
+            {% set numb = numb + 1 %}
     {% endfor %}
 </div>
 {% endblock %}
